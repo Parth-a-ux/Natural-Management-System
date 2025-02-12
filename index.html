@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Natural Management System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        .chatbox {
+            border: 1px solid #ccc;
+            padding: 10px;
+            height: 300px;
+            overflow-y: auto;
+            background: #fff;
+        }
+        input {
+            width: 80%;
+            padding: 10px;
+            margin-top: 10px;
+        }
+        button {
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Natural Management System</h1>
+        <p>AI-driven disaster prediction and preparedness</p>
+        <div class="chatbox" id="chatbox"></div>
+        <input type="text" id="userInput" placeholder="Ask me about disaster management...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+
+    <script>
+        const responses = {
+            "hello": "Hello! How can I assist you with disaster management today?",
+            "what is natural management system": "Natural Management System is an AI-driven project designed to predict and prepare for natural disasters, ensuring safety and awareness.",
+            "how does it predict disasters": "Our system analyzes weather patterns, historical data, and real-time inputs to predict potential disasters like earthquakes, floods, and storms.",
+            "how to prepare for a disaster": "Preparedness includes having an emergency kit, staying informed through alerts, and following evacuation protocols.",
+            "goodbye": "Stay safe! If you need more assistance, feel free to ask.",
+            "what are the types of natural disasters": "Natural disasters include earthquakes, hurricanes, floods, wildfires, tsunamis, and tornadoes.",
+            "how can i stay informed about disasters": "You can stay informed through government alerts, weather apps, and local news sources.",
+            "what should be in an emergency kit": "An emergency kit should include water, food, a flashlight, batteries, a first aid kit, and important documents.",
+            "what to do during an earthquake": "During an earthquake, drop, cover, and hold on. Stay indoors if you are inside and away from windows.",
+            "how can climate change affect disasters": "Climate change can increase the intensity and frequency of natural disasters such as hurricanes and wildfires."
+        };
+        
+        function sendMessage() {
+            let userInput = document.getElementById("userInput").value.toLowerCase();
+            let chatbox = document.getElementById("chatbox");
+            
+            if (userInput.trim() === "") return;
+            
+            chatbox.innerHTML += `<p><strong>You:</strong> ${userInput}</p>`;
+            document.getElementById("userInput").value = "";
+            
+            let botResponse = responses[userInput] || "I'm not sure about that. Can you rephrase or ask something else?";
+            chatbox.innerHTML += `<p><strong>NMS Chatbot:</strong> ${botResponse}</p>`;
+            chatbox.scrollTop = chatbox.scrollHeight;
+        }
+    </script>
+</body>
+</html>
